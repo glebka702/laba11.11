@@ -93,4 +93,44 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+    public class Complex {
+    // ... существующие поля и методы ...
+    
+    // Метод 1: Возведение в целую степень
+    public Complex power(int n) {
+        Complex result = new Complex(1, 0);
+        for (int i = 0; i < n; i++) {
+            result = result.multiply(this);
+        }
+        return result;
+    }
+    
+    // Метод 2: Вычисление синуса комплексного числа
+    public Complex sin() {
+        double realPart = Math.sin(real) * Math.cosh(imaginary);
+        double imagPart = Math.cos(real) * Math.sinh(imaginary);
+        return new Complex(realPart, imagPart);
+    }
+    
+    // Метод 3: Вычисление косинуса комплексного числа
+    public Complex cos() {
+        double realPart = Math.cos(real) * Math.cosh(imaginary);
+        double imagPart = -Math.sin(real) * Math.sinh(imaginary);
+        return new Complex(realPart, imagPart);
+    }
+    
+    // Метод 4: Натуральный логарифм
+    public Complex log() {
+        double realPart = Math.log(this.modulus());
+        double imagPart = Math.atan2(imaginary, real);
+        return new Complex(realPart, imagPart);
+    }
+    
+    // Метод 5: Экспонента
+    public Complex exp() {
+        double expReal = Math.exp(real);
+        double realPart = expReal * Math.cos(imaginary);
+        double imagPart = expReal * Math.sin(imaginary);
+        return new Complex(realPart, imagPart);
+    }
 }
